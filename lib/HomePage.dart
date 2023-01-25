@@ -1,261 +1,196 @@
 import 'package:flutter/material.dart';
 import 'package:yemektenevar/data.dart';
+import 'package:horizontalcalender/horizontalcalendar.dart';
 
 class HomePage extends StatefulWidget {
-  HomePage({Key? key}) : super(key: key);
+  const HomePage({Key? key}) : super(key: key);
 
   @override
   State<HomePage> createState() => _HomePageState();
 }
 
 class _HomePageState extends State<HomePage> {
+  Color blue = const Color.fromRGBO(1, 208, 201, 1);
+  Color grey = const Color.fromRGBO(50, 50, 50, 1);
+  Color orange = Color.fromARGB(255, 255, 88, 88);
+  FixedExtentScrollController itemController = FixedExtentScrollController();
+  int tarih = 0;
+
+  @override
+  void initState() {
+    itemController.initialItem;
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromARGB(255, 240, 240, 240),
-      body: Center(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Image.asset(
-              "assets/images/playstore.png",
-              height: 180,
+      appBar: AppBar(
+        title: Padding(
+          padding: const EdgeInsets.only(top: 6.0),
+          child: Text(
+            "YEMEKTE NE VAR?",
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 30,
+              letterSpacing: 2,
+              fontFamily: "yanoneB",
+              fontWeight: FontWeight.w800,
             ),
-            Container(
-              child: Text(
-                "Yemekte Ne Var?",
-                style: TextStyle(
-                    color: Color.fromRGBO(232, 80, 80, 1),
-                    fontSize: 26,
-                    fontFamily: "comfortaaB",
-                    fontWeight: FontWeight.w900),
+          ),
+        ),
+        centerTitle: true,
+        backgroundColor: blue.withOpacity(.5),
+        elevation: 0,
+      ),
+      backgroundColor: Color.fromARGB(255, 243, 243, 243),
+      body: SingleChildScrollView(
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              const SizedBox(
+                height: 28,
               ),
-            ),
-            SizedBox(
-              height: 50,
-            ),
-            Text(
-              "Ekim",
-              style: TextStyle(
-                  color: Color.fromRGBO(232, 80, 80, 1),
-                  fontSize: 20,
-                  fontFamily: "comfortaaB",
-                  fontWeight: FontWeight.w900),
-            ),
-            SizedBox(
-              height: 10,
-            ),
-            Center(
-              child: Container(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisAlignment: MainAxisAlignment.center,
+              Image.asset(
+                "assets/images/playstore.png",
+                height: 66,
+              ),
+              const SizedBox(
+                height: 16,
+              ),
+              Container(
+                  height: 140,
+                  width: MediaQuery.of(context).size.width,
+                  padding: const EdgeInsets.all(16.0),
+                  child: HorizontalCalendar(
+                    DateTime.utc(2023, 2, 1),
+                    width: MediaQuery.of(context).size.width * .25,
+                    height: 100,
+                    selectionColor: blue.withOpacity(.8),
+                    itemController: itemController,
+                    dateTextStyle: normalDayStyle(),
+                    dayTextStyle: normalTextStyle(),
+                    daysCount: 28,
+                    monthTextStyle: normalTextStyle(),
+                    selectedDateStyle: selectedDayStyle(),
+                    selectedDayStyle: selectedTextStyle(),
+                    selectedTextColor: Colors.white,
+                    onDateChange: (selectedDate, position) {
+                      setState(() {
+                        tarih = position;
+                      });
+                    },
+                  )),
+              menuWidget(tarih),
+              Padding(
+                padding: const EdgeInsets.all(36.0),
+                child: Text(
+                  "AFİYET OLSUN !",
+                  style: TextStyle(
+                    letterSpacing: 4,
+                    color: blue.withOpacity(.8),
+                    fontSize: 32,
+                    fontFamily: "yanoneM",
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  menuWidget(int sayi) {
+    var corba = Strings.Yemek1[sayi];
+    var anayemek = Strings.Yemek2[sayi];
+    var yan = Strings.Yemek3[sayi];
+    var yan2 = Strings.Yemek4[sayi];
+    var vejeteryan = Strings.vejeteryan[sayi];
+    return Center(
+      child: Container(
+          padding: const EdgeInsets.all(16),
+          height: MediaQuery.of(context).size.height * 0.38,
+          width: MediaQuery.of(context).size.width * 0.8,
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(20),
+          ),
+          child: corba != ""
+              ? Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    Row(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      mainAxisAlignment: MainAxisAlignment.center,
+                    Column(
                       children: [
-                        Tarih(1),
-                        Tarih(2),
-                        Tarih(3),
-                        Tarih(4),
-                        Tarih(5),
+                        menuText(corba),
+                        menuText(anayemek),
+                        menuText(yan),
+                        menuText(yan2),
                       ],
                     ),
-                    Row(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      mainAxisAlignment: MainAxisAlignment.center,
+                    Column(
                       children: [
-                        Tarih(6),
-                        Tarih(7),
-                        Tarih(8),
-                        Tarih(9),
-                        Tarih(10),
-                      ],
-                    ),
-                    Row(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Tarih(11),
-                        Tarih(12),
-                        Tarih(13),
-                        Tarih(14),
-                        Tarih(15),
-                      ],
-                    ),
-                    Row(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Tarih(16),
-                        Tarih(17),
-                        Tarih(18),
-                        Tarih(19),
-                        Tarih(20),
-                      ],
-                    ),
-                    Row(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Tarih(21),
-                        Tarih(22),
-                        Tarih(23),
-                        Tarih(24),
-                        Tarih(25),
-                      ],
-                    ),
-                    Row(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Tarih(26),
-                        Tarih(27),
-                        Tarih(28),
-                        Tarih(29),
-                        Tarih(30),
+                        Padding(
+                          padding: const EdgeInsets.only(bottom: 6.0),
+                          child: Text(
+                            "VEJETERYAN",
+                            style: TextStyle(
+                                color: blue.withOpacity(.8),
+                                fontSize: 26,
+                                fontFamily: "yanoneB",
+                                letterSpacing: 1.0),
+                          ),
+                        ),
+                        menuText(vejeteryan),
                       ],
                     )
                   ],
-                ),
-              ),
-            )
-          ],
+                )
+              : Center(
+                  child: menuText("HAFTA SONU"),
+                )),
+    );
+  }
+
+  menuText(String yemek) {
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 8.0),
+      child: Text(
+        yemek.toUpperCase(),
+        style: TextStyle(
+          overflow: TextOverflow.ellipsis,
+          color: grey,
+          fontSize: 26,
+          letterSpacing: 1,
+          fontFamily: "yanoneM",
         ),
       ),
     );
   }
 
-  Tarih(int sayi) {
-    return InkWell(
-      onTap: () {
-        Navigator.push(
-            context, MaterialPageRoute(builder: (context) => deneme(sayi)));
-      },
-      child: Container(
-        margin: EdgeInsets.all(6),
-        height: 48,
-        width: 48,
-        child: Center(
-          child: Text(
-            sayi.toString(),
-            style: TextStyle(
-                color: Color.fromARGB(255, 255, 255, 255),
-                fontSize: 18,
-                fontFamily: "comfortaaB",
-                fontWeight: FontWeight.w900),
-            textAlign: TextAlign.center,
-          ),
-        ),
-        decoration: BoxDecoration(
-          border: Border.all(color: Color.fromRGBO(106, 106, 106, 1), width: 2),
-          borderRadius: BorderRadius.circular(8),
-          color: Color.fromRGBO(31, 179, 174, 1),
-        ),
-      ),
+  TextStyle normalTextStyle() => TextStyle(
+      fontSize: 22, letterSpacing: 1.0, fontFamily: "yanoneM", color: grey);
+
+  TextStyle normalDayStyle() => TextStyle(
+      fontSize: 24, letterSpacing: 1.0, fontFamily: "yanoneM", color: grey);
+
+  TextStyle selectedDayStyle() {
+    return const TextStyle(
+      fontSize: 26,
+      letterSpacing: 1.0,
+      color: Colors.white,
+      fontFamily: "yanoneB",
     );
   }
 
-  deneme(int sayi) {
-    var corba = Strings.Yemek1[sayi - 1];
-    var anayemek = Strings.Yemek2[sayi - 1];
-    var yan = Strings.Yemek3[sayi - 1];
-    var yan2 = Strings.Yemek4[sayi - 1];
-    return Scaffold(
-      backgroundColor: Color.fromARGB(255, 240, 240, 240),
-      body: Container(
-        alignment: Alignment.center,
-        decoration: BoxDecoration(),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Image.asset(
-              "assets/images/playstore.png",
-              height: 180,
-            ),
-            SizedBox(
-              height: 0,
-            ),
-            Text(
-              "Günün Menüsü",
-              style: TextStyle(
-                  color: Color.fromRGBO(232, 80, 80, 1),
-                  fontSize: 26,
-                  fontFamily: "comfortaaB",
-                  fontWeight: FontWeight.w900),
-            ),
-            SizedBox(
-              height: 35,
-            ),
-            Text(
-              corba,
-              style: TextStyle(
-                  color: Color.fromRGBO(31, 179, 174, 1),
-                  fontSize: 22,
-                  fontFamily: "comfortaaB",
-                  fontWeight: FontWeight.w900),
-            ),
-            SizedBox(
-              height: 10,
-            ),
-            Text(
-              anayemek,
-              style: TextStyle(
-                  color: Color.fromRGBO(31, 179, 174, 1),
-                  fontSize: 22,
-                  fontFamily: "comfortaaB",
-                  fontWeight: FontWeight.w900),
-            ),
-            SizedBox(
-              height: 10,
-            ),
-            Text(
-              yan,
-              style: TextStyle(
-                  color: Color.fromRGBO(31, 179, 174, 1),
-                  fontSize: 22,
-                  fontFamily: "comfortaaB",
-                  fontWeight: FontWeight.w900),
-            ),
-            SizedBox(
-              height: 10,
-            ),
-            Text(
-              yan2,
-              style: TextStyle(
-                  color: Color.fromRGBO(31, 179, 174, 1),
-                  fontSize: 22,
-                  fontFamily: "comfortaaB",
-                  fontWeight: FontWeight.w900),
-            ),
-            SizedBox(
-              height: 50,
-            ),
-            Text(
-              "Afiyet Olsun!",
-              style: TextStyle(
-                  color: Color.fromRGBO(31, 179, 174, 1),
-                  fontSize: 18,
-                  fontFamily: "comfortaaM",
-                  fontWeight: FontWeight.w600),
-            ),
-            SizedBox(
-              height: 6,
-            ),
-            Text(
-              "(mümkünse tabi)",
-              style: TextStyle(
-                  color: Color.fromRGBO(31, 179, 174, 1),
-                  fontSize: 18,
-                  fontFamily: "comfortaaM",
-                  fontWeight: FontWeight.w600),
-            )
-          ],
-        ),
-      ),
+  TextStyle selectedTextStyle() {
+    return const TextStyle(
+      fontSize: 22,
+      letterSpacing: 1.0,
+      color: Colors.white,
+      fontFamily: "yanoneB",
     );
   }
 }

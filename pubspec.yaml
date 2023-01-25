@@ -34,6 +34,7 @@ dependencies:
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
+  horizontalcalender: ^0.0.4
 
 dev_dependencies:
   flutter_test:
@@ -74,19 +75,19 @@ flutter:
   # list giving the asset and other descriptors for the font. For
   # example:
   fonts:
-    - family: comfortaaB
+    - family: yanoneB
       fonts:
-        - asset: assets/fonts/Comfortaa-Bold.ttf
+        - asset: assets/fonts/YanoneKaffeesatz-Bold.ttf
   #       - asset: fonts/Schyler-Italic.ttf
   #         style: italic
-    - family: ComfortaaL
+    - family: yanoneL
       fonts:
-        - asset: assets/fonts/Comfortaa-Light.ttf
+        - asset: assets/fonts/YanoneKaffeesatz-Light.ttf
   #       - asset: fonts/TrajanPro_Bold.ttf
   #         weight: 700
-    - family: ComfortaaM
+    - family: yanoneM
       fonts:
-        - asset: assets/fonts/Comfortaa-Medium.ttf
+        - asset: assets/fonts/YanoneKaffeesatz-Medium.ttf
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
