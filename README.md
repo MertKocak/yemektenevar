@@ -1,2 +1,2 @@
 # yemektenevar
- İstanbul Medeniyet Üniversitesi Yemekhane Günlük Menü Uygulaması
+Üniversite Yemekhane Günlük Menü Uygulaması
