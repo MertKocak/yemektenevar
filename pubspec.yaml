@@ -3,7 +3,7 @@ description: A new Flutter project.
 
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
-publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+publish_to: "none" # Remove this line if you wish to publish to pub.dev
 
 # The following defines the version and build number for your application.
 # A version number is three numbers separated by dots, like 1.2.43
@@ -30,7 +30,6 @@ dependencies:
   flutter:
     sdk: flutter
 
-
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
@@ -38,6 +37,7 @@ dependencies:
   firebase_auth: ^4.7.2
   cloud_firestore: ^4.8.4
   firebase_core: ^2.15.0
+  flutter_native_splash: ^2.3.1
 
 dev_dependencies:
   flutter_test:
@@ -55,7 +55,6 @@ dev_dependencies:
 
 # The following section is specific to Flutter packages.
 flutter:
-
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.
@@ -81,16 +80,27 @@ flutter:
     - family: yanoneB
       fonts:
         - asset: assets/fonts/YanoneKaffeesatz-Bold.ttf
-  #       - asset: fonts/Schyler-Italic.ttf
-  #         style: italic
+    #       - asset: fonts/Schyler-Italic.ttf
+    #         style: italic
     - family: yanoneL
       fonts:
         - asset: assets/fonts/YanoneKaffeesatz-Light.ttf
-  #       - asset: fonts/TrajanPro_Bold.ttf
-  #         weight: 700
+    #       - asset: fonts/TrajanPro_Bold.ttf
+    #         weight: 700
     - family: yanoneM
       fonts:
         - asset: assets/fonts/YanoneKaffeesatz-Medium.ttf
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
+
+# SPLASH SCREEN
+flutter_native_splash:
+  color: "#000000"
+  image: assets/images/playstore.png
+
+  android_12:
+    image: assets/images/playstore.png
+    icon_background_color: "#000000"
+
+  web: true
