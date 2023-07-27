@@ -96,11 +96,11 @@ flutter:
 
 # SPLASH SCREEN
 flutter_native_splash:
-  color: "#000000"
+  color: "#ffffff"
   image: assets/images/playstore.png
 
   android_12:
     image: assets/images/playstore.png
-    icon_background_color: "#000000"
+    icon_background_color: "#ffffff"
 
   web: true
