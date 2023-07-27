@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "734436895037",
+    "project_id": "yemektenevar",
+    "storage_bucket": "yemektenevar.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:734436895037:android:03ea69ae166092ae6afd54",
+        "android_client_info": {
+          "package_name": "com.example.yemektenevar"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "734436895037-4bgrnqspqves089rpvdnjsf2l53if0qj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA21ssSW2nn_-HVNSk7fXfiLzECRHQTTTM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "734436895037-4bgrnqspqves089rpvdnjsf2l53if0qj.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "734436895037-5ddp68ieou6527jvgvkjbf7ocm44sj2v.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.yemektenevar.app"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
